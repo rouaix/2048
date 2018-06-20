@@ -10,17 +10,17 @@
 <body>
     <nav id="bandeau">
         <img src="./img/2121.png" id="logo" alt="" title="Commencer une partie !" onclick="return lancerJeu();" class="animated bounce">
-        <p>
-            <label for="taille">Taille de la grille </label><br />
-            <input type="number" name="lataille" id="lataille" value="4" max="8" min="4" onchange="changeTaille();" /><br />
-            <i>Changez la taille et cliquez sur le smiley.</i>
-        </p>
-        
     </nav>
-    <div id="plateau"></div>
-    <h2>Score :
-        <span id="score"></span>
-    </h2>
+    <section>
+        <div class="espacedejeu">
+           <div class="choix"><label for="taille">Taille de la grille </label>
+            <input type="number" name="lataille" id="lataille" value="4" max="8" min="4" onchange="changeTaille();" /><div>
+            <div id="plateau"></div>
+            <div class="afficheur">Score : <span id="score"></span></div>
+        </div>          
+    </section>
+    
+
     <p><strong>Comment jouer:</strong><br />Utilisez le clavier pour faire bouger les cases et obtenir le chiffre 2048.</p>
 
 
@@ -30,8 +30,6 @@
         let taille = document.getElementById("lataille").value;
         var min = 0;
         var max = taille - 1;
-
-        var sens = "";
 
         var dejaFait = false;
         var score = 0;
@@ -46,9 +44,7 @@
         }
             
         function lancerJeu() {
-            //alert("lancerJeu");
-            //Load the table
-            //changeTaille();
+            //Construction du plateau
             var html = '<table>';
             for (var ligne = 0; ligne < taille; ligne++) {
                 html += '<tr>';
@@ -59,7 +55,6 @@
                 html += '</tr>';
             }
             html += '</table>';
-            //alert(html);
             document.getElementById("plateau").innerHTML = html;
 
             var id1 = getId();
@@ -69,15 +64,13 @@
                 if (id1 != id2)
                     break;
             }
-            //Set initial 2 values
+            
+            //Valeurs initiales
             document.getElementById(id1).innerHTML = "2";
             document.getElementById(id2).innerHTML = "2";
 
             document.getElementById(id1).style.backgroundColor = choixCouleur(2);
             document.getElementById(id2).style.backgroundColor = choixCouleur(2);
-
-            //document.getElementById(id1).style.className = "fraise";
-            //document.getElementById(id2).style.className = "animated shake";
 
             score = 0;
             document.getElementById("score").innerHTML = score;
@@ -481,7 +474,7 @@
         }
 
     
-        //calling lancerJeu method
+        //Lance le jeu
         lancerJeu();
         //-->
 
