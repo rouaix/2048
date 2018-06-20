@@ -1,62 +1,86 @@
-*{box-sizing: border-box;}
-
-html, body {
-  margin: 0;
-  padding: 0;
-
-  background: #333;
-  color: #fff;
-  font-family: "Arial", "sans-serif";
-  font-size: 24px;
-  text-align: center;
+* {
+    box-sizing: border-box;
 }
 
-p{text-align:center;}
-label{font-size:14px;}
-i{font-size: 11px;}
+html,
+body {
+    margin: 0;
+    padding: 0;
 
-input{
-    width:80px;
-    height:30px;
-    font-size:16px;
+    background: #333;
+    color: #fff;
+    font-family: "Arial", "sans-serif";
+    font-size: 24px;
     text-align: center;
-    color:#fff;
-    background-color:transparent;
-    border:1px solid #555;
-    
 }
-table, td {
+
+h1 {
+    font-size: 150%;
+}
+
+p {
+    text-align: center;
+}
+
+label {
+    font-size: 14px;
+}
+
+i {
+    font-size: 11px;
+}
+
+input {
+    width: 80px;
+    height: 30px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+    background-color: transparent;
+    border: 1px solid #555;
+
+}
+
+table,
+td {
     margin: auto auto;
-    color:#444;
+    color: #444;
     border-collapse: collapse;
     border: 0px solid #555;
-    font-weight:600;
+    font-weight: 600;
 }
 
 td {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     width: 69px;
     height: 69px;
-    border:1px solid #555;
-    border-radius:3px;
+    border: 1px solid #555;
+    border-radius: 3px;
 }
 
-nav{
-    display:block;
-    width:100%;
-    margin:0;
-    padding:10px;
+nav {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
 }
 
-nav img{
-    cursor:pointer;
-    margin:10px;
+nav img {
+    cursor: pointer;
+    margin: 10px;
 }
 
-section{text-align:center;}
+section {
+    text-align: center;
+}
 
-.fond{
+footer {
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.fond {
     background-image: url("../img/2115.png");
     background-repeat: no-repeat;
     background-size: 72px 72px;
@@ -64,40 +88,42 @@ section{text-align:center;}
     background-position: -2px -2px;
 }
 
-.fraise{
+.fraise {
     background-image: url("../img/fond.gif");
     background-size: 200px 200px;
     background-origin: border-box;
     background-position: center center;
 }
 
-#plateau{
-    display:inline-block;
+#plateau {
+    display: inline-block;
     background-color: #555;
-    padding:1px;
-    margin-top:10px;
-    margin-bottom:10px;
+    padding: 1px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.espacedejeu{
-    display:inline-block;
+.espacedejeu {
+    display: inline-block;
     background-color: #777;
-    padding:10px;
-    border:1px solid #555; 
-    overflow:hidden;
+    padding: 10px;
+    border: 1px solid #555;
+    overflow: hidden;
 }
 
-.afficheur{
-    color:#fff;
+.afficheur {
+    color: #fff;
     font-size: 20px;
-    font-weight:600;
+    font-weight: 600;
 }
 
-.choix label{
-    color:#fff;
+.choix label {
+    color: #fff;
     font-size: 18px;
-    font-weight:500;
+    font-weight: 500;
     margin-right: 10px;
 }
 
-.choix{padding-bottom:10px;}
+.choix {
+    padding-bottom: 10px;
+}
