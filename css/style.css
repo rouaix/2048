@@ -1,3 +1,5 @@
+*{box-sizing: border-box;}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -12,19 +14,32 @@ html, body {
 p{text-align:center;}
 label{font-size:14px;}
 i{font-size: 11px;}
+
+input{
+    width:80px;
+    height:30px;
+    font-size:16px;
+    text-align: center;
+    color:#fff;
+    background-color:transparent;
+    border:1px solid #555;
+    
+}
 table, td {
     margin: auto auto;
     color:#444;
     border-collapse: collapse;
-    border: 3px solid #333;
+    border: 0px solid #555;
     font-weight:600;
 }
 
 td {
     margin:0;
     padding:0;
-    width: 70px;
-    height: 70px;
+    width: 69px;
+    height: 69px;
+    border:1px solid #555;
+    border-radius:3px;
 }
 
 nav{
@@ -39,12 +54,14 @@ nav img{
     margin:10px;
 }
 
+section{text-align:center;}
+
 .fond{
     background-image: url("../img/2115.png");
     background-repeat: no-repeat;
-    background-size: 74px 74px;
+    background-size: 72px 72px;
     background-origin: border-box;
-    background-position: -1px -1px;
+    background-position: -2px -2px;
 }
 
 .fraise{
@@ -53,3 +70,34 @@ nav img{
     background-origin: border-box;
     background-position: center center;
 }
+
+#plateau{
+    display:inline-block;
+    background-color: #555;
+    padding:1px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.espacedejeu{
+    display:inline-block;
+    background-color: #777;
+    padding:10px;
+    border:1px solid #555; 
+    overflow:hidden;
+}
+
+.afficheur{
+    color:#fff;
+    font-size: 20px;
+    font-weight:600;
+}
+
+.choix label{
+    color:#fff;
+    font-size: 18px;
+    font-weight:500;
+    margin-right: 10px;
+}
+
+.choix{padding-bottom:10px;}
