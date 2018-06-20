@@ -1,0 +1,55 @@
+html, body {
+  margin: 0;
+  padding: 0;
+
+  background: #333;
+  color: #fff;
+  font-family: "Arial", "sans-serif";
+  font-size: 24px;
+  text-align: center;
+}
+
+p{text-align:center;}
+label{font-size:14px;}
+i{font-size: 11px;}
+table, td {
+    margin: auto auto;
+    color:#444;
+    border-collapse: collapse;
+    border: 3px solid #333;
+    font-weight:600;
+}
+
+td {
+    margin:0;
+    padding:0;
+    width: 70px;
+    height: 70px;
+}
+
+nav{
+    display:block;
+    width:100%;
+    margin:0;
+    padding:10px;
+}
+
+nav img{
+    cursor:pointer;
+    margin:10px;
+}
+
+.fond{
+    background-image: url("../img/2115.png");
+    background-repeat: no-repeat;
+    background-size: 74px 74px;
+    background-origin: border-box;
+    background-position: -1px -1px;
+}
+
+.fraise{
+    background-image: url("../img/fond.gif");
+    background-size: 200px 200px;
+    background-origin: border-box;
+    background-position: center center;
+}
