@@ -86,6 +86,16 @@ footer {
     background-size: 72px 72px;
     background-origin: border-box;
     background-position: -2px -2px;
+    opcity:1;
+}
+
+.max{
+    text-align:center;
+    vertical-align:middle;
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:20px 0 0 0;    
 }
 
 .fraise {
@@ -93,6 +103,19 @@ footer {
     background-size: 200px 200px;
     background-origin: border-box;
     background-position: center center;
+    width:100%;
+    height:100%;
+    margin:0;padding:0;
+}
+
+.smile {
+    background-image: url("../img/2116.png");
+    background-size: 70px 70px;
+    background-origin: border-box;
+    background-position: center center;
+    width:100%;
+    height:100%;
+    margin:0;padding:0;
 }
 
 #plateau {
@@ -111,6 +134,9 @@ footer {
     overflow: hidden;
 }
 
+.espacedejeu div{
+   
+}
 .afficheur {
     color: #fff;
     font-size: 20px;
