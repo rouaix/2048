@@ -31,10 +31,10 @@
         let taille = document.getElementById("lataille").value;
         var min = 0;
         var max = taille - 1;
-
+        var z = "";
         var dejaFait = false;
         var score = 0;
-
+        var sens = "";
         var exclureIds = [];
 
         function changeTaille(){
@@ -51,7 +51,7 @@
                 html += '<tr>';
                 for (var colonne = 0; colonne < taille; colonne++) {
                     var id = ligne + "" + colonne;
-                    html += '<td align="center" valign="center" id="' + id + '" class="fond"></td>';
+                    html += '<td align="center" valign="center"><div class="fraise"><div class="smile"><div id="' + id + '" class="fond max"></div></div></div></td>';
                 }
                 html += '</tr>';
             }
@@ -75,7 +75,8 @@
 
             score = 0;
             document.getElementById("score").innerHTML = score;
-
+            
+            miseAJour();
             return false;
         }
 
@@ -102,7 +103,6 @@
             }
             if (dejaFait == true) {
                 miseAJour();
-                fond();
             }
             return false;
         }
@@ -120,7 +120,6 @@
             }
             if (dejaFait == true) {
                 miseAJour();
-                fond();
             }
             return false;
         }
@@ -139,7 +138,6 @@
             }
             if (dejaFait == true) {
                 miseAJour();
-                fond();
             }
             return false;
         }
@@ -157,7 +155,6 @@
             }
             if (dejaFait == true) {
                 miseAJour();
-                fond();
             }
             return false;
         }
@@ -170,7 +167,8 @@
                     var id = i + "" + j;
                     verifer_valeur(id);
                     if (document.getElementById(id).innerHTML == "") {
-                        ids.push(id);                        
+                        ids.push(id);    
+                        document.getElementById(id).style.backgroundColor = "#444444";
                     }
                 }
             }
@@ -187,7 +185,7 @@
                     verifer_valeur(id);
                     if (document.getElementById(id).innerHTML == "") {
                         allFilled = false; 
-                        document.getElementById(id).className = "fond";
+                        document.getElementById(id).style.backgroundColor = "#444444";
                         break;
                     }
                 }
@@ -204,33 +202,43 @@
             var laclasse = document.getElementById(id);
             var z = document.getElementById(id).textContent;
             
-            if (z > 32){                
-                laclasse.className = "fraise";
+            if (z > 2){                
+                //document.getElementById(z).className = "fond max animated retard flash";            
             }else{
-                laclasse.className = "fond";
+                laclasse.className = "fond max";
             }
+            return true;
         }
         
-        function fond(){
-            //sleep(1000);
-            for (var i = min; i <= max; i++) {
-                for (var j = min; j <= max; j++) {
-                    var id = i + "" + j;
-                    //document.getElementById(id).className = "fond";
-                }
-            }
+        function animation(z, sens){
+            //if (sens =="haut"){document.getElementById(z).className = "fond max animated bounceInUp lueur";}
+            //if (sens =="bas"){document.getElementById(z).className = "fond max animated bounceInDown";}
+            //if (sens =="droite"){document.getElementById(z).className = "fond max animated bounceInLeft";}
+            //if (sens =="gauche"){document.getElementById(z).className = "fond max animated bounceInRight";}
+            if (sens =="haut"){document.getElementById(z).className = "fond max anhaut";}
+            if (sens =="bas"){document.getElementById(z).className = "fond max anbas";}
+            if (sens =="droite"){document.getElementById(z).className = "fond max androite";}
+            if (sens =="gauche"){document.getElementById(z).className = "fond max angauche";}
+            //document.getElementById(z).className = "fond max animated retard flash";
         }
 
         function sleep(milliSeconds){
-                var startTime = new Date().getTime();
-                while (new Date().getTime() < startTime + milliSeconds);
+            var startTime = new Date().getTime();
+            while (new Date().getTime() < startTime + milliShauteconds);
+        }
+        
+        function efface(z){
+            document.getElementById(z).innerHTML = "";
+            document.getElementById(z).style.backgroundColor = "#444444"; 
+            //document.getElementById(z).className = "fraise max";
+            //verifer_valeur(z);
+            return true;
         }
         
         function checkGameOver() {
             var isOver = true;
             for (var j = min; j <= max; j++) {
                 for (var i = min; i <= (max - 1); i++) {
-                    //alert(i+" "+j);
                     var val = parseInt(document.getElementById(i + "" + j).innerHTML);
                     var nVal = parseInt(document.getElementById((i + 1) + "" + j).innerHTML);
                     if (val == nVal) {
@@ -331,8 +339,7 @@
                     break;
             }
         };
-
-
+        
         function moveUp(id) {
             if (!id.startsWith(min)) {
                 var arr = id.split("");
@@ -346,10 +353,11 @@
                         if (val == nVal) {
                             if (exclureIds.indexOf(nId) == -1) {
                                 exclureIds.push(nId);
-                                document.getElementById(nId).innerHTML = (val + nVal);
+                                animation(nId,"haut");
+                                document.getElementById(nId).innerHTML = (val + nVal);                            
                                 document.getElementById(nId).style.backgroundColor = choixCouleur((val + nVal));
-                                document.getElementById((k + 1) + "" + j).innerHTML = "";
-                                document.getElementById((k + 1) + "" + j).style.backgroundColor = "#444444";
+                                efface((k + 1) + "" + j);
+                                //verifer_valeur(id);
                                 dejaFait = true;
                                 score += (val + nVal);
                             }
@@ -358,8 +366,7 @@
                     } else {
                         document.getElementById(nId).innerHTML = document.getElementById((k + 1) + "" + j).innerHTML;
                         document.getElementById(nId).style.backgroundColor = document.getElementById((k + 1) + "" + j).style.backgroundColor;
-                        document.getElementById((k + 1) + "" + j).innerHTML = "";
-                        document.getElementById((k + 1) + "" + j).style.backgroundColor = "#444444";
+                        efface((k + 1) + "" + j);
                         dejaFait = true;
                     }
                 }
@@ -382,12 +389,13 @@
                         var val = parseInt(document.getElementById(x + "" + (boucle - 1)).innerHTML);
                         var nVal = parseInt(document.getElementById(nId).innerHTML);
                         if (val == nVal) {
-                            if (exclureIds.indexOf(nId) == -1) {
+                             if (exclureIds.indexOf(nId) == -1) {
                                 exclureIds.push(nId);
+                                animation(nId,"droite");
                                 document.getElementById(nId).innerHTML = (val + nVal);
                                 document.getElementById(nId).style.backgroundColor = choixCouleur((val + nVal));
-                                document.getElementById(x + "" + (boucle - 1)).innerHTML = "";
-                                document.getElementById(x + "" + (boucle - 1)).style.backgroundColor = "#444444";
+                                efface(x + "" + (boucle - 1));
+                                //verifer_valeur(id);
                                 dejaFait = true;
                                 score += (val + nVal);
                             }
@@ -396,8 +404,7 @@
                     } else {
                         document.getElementById(nId).innerHTML = document.getElementById(x + "" + (boucle - 1)).innerHTML;
                         document.getElementById(nId).style.backgroundColor = document.getElementById(x + "" + (boucle - 1)).style.backgroundColor;
-                        document.getElementById(x + "" + (boucle - 1)).innerHTML = "";
-                        document.getElementById(x + "" + (boucle - 1)).style.backgroundColor = "#444444";
+                        efface(x + "" + (boucle - 1));
                         dejaFait = true;
                     }
                 }
@@ -416,13 +423,13 @@
                         var val = parseInt(document.getElementById((k - 1) + "" + j).innerHTML);
                         var nVal = parseInt(document.getElementById(nId).innerHTML);
                         if (val == nVal) {
-                            if (exclureIds.indexOf(nId) == -1) {
+                             if (exclureIds.indexOf(nId) == -1) {
                                 exclureIds.push(nId);
+                                animation(nId,"bas");
                                 document.getElementById(nId).innerHTML = (val + nVal);
                                 document.getElementById(nId).style.backgroundColor = choixCouleur((val + nVal));
-                                document.getElementById((k - 1) + "" + j).innerHTML = "";
-                                document.getElementById((k - 1) + "" + j).style.backgroundColor = "#444444";
-                                verifer_valeur(id);
+                                efface((k - 1) + "" + j);
+                                //verifer_valeur(id);
                                 dejaFait = true;
                                 score += (val + nVal);
                             }
@@ -432,7 +439,6 @@
                         document.getElementById(nId).innerHTML = document.getElementById((k - 1) + "" + j).innerHTML;
                         document.getElementById(nId).style.backgroundColor = document.getElementById((k - 1) + "" + j).style.backgroundColor;
                         document.getElementById((k - 1) + "" + j).innerHTML = "";
-                        document.getElementById((k - 1) + "" + j).style.backgroundColor = "#444444";
                         dejaFait = true;
                     }
                 }
@@ -453,10 +459,11 @@
                         if (val == nVal) {
                             if (exclureIds.indexOf(nId) == -1) {
                                 exclureIds.push(nId);
+                                animation(nId,"gauche");
                                 document.getElementById(nId).innerHTML = (val + nVal);
                                 document.getElementById(nId).style.backgroundColor = choixCouleur((val + nVal));
-                                document.getElementById(i + "" + (k + 1)).innerHTML = "";
-                                document.getElementById(i + "" + (k + 1)).style.backgroundColor = "#444444";
+                                efface((i + "" + (k + 1)));
+                                //verifer_valeur(id);
                                 dejaFait = true;
                                 score += (val + nVal);
                             }
@@ -466,7 +473,6 @@
                         document.getElementById(nId).innerHTML = document.getElementById(i + "" + (k + 1)).innerHTML;
                         document.getElementById(nId).style.backgroundColor = document.getElementById(i + "" + (k + 1)).style.backgroundColor;
                         document.getElementById(i + "" + (k + 1)).innerHTML = "";
-                        document.getElementById(i + "" + (k + 1)).style.backgroundColor = "#444444";
                         dejaFait = true;
                     }
                 }
