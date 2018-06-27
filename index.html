@@ -221,12 +221,7 @@
             if (sens =="gauche"){document.getElementById(z).className = "fond max angauche";}
             //document.getElementById(z).className = "fond max animated retard flash";
         }
-
-        function sleep(milliSeconds){
-            var startTime = new Date().getTime();
-            while (new Date().getTime() < startTime + milliShauteconds);
-        }
-        
+       
         function efface(z){
             document.getElementById(z).innerHTML = "";
             document.getElementById(z).style.backgroundColor = "#444444"; 
@@ -310,17 +305,6 @@
             }
             return color;
         }
-
-        if (typeof String.prototype.startsWith != 'function') {
-            String.prototype.startsWith = function(str) {
-                return this.substring(0, str.length) === str;
-            }
-        };
-        if (typeof String.prototype.endsWith != 'function') {
-            String.prototype.endsWith = function(str) {
-                return this.substring(this.length - str.length, this.length) === str;
-            }
-        };
 
         document.onkeydown = function(e) {
             e.preventDefault(); //to prevent scroll of screen
